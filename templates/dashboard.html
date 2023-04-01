@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Covid-19 Dashboard</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/iitk-logo-black.png') }}" type="image/x-icon">
+    {% for filename in ['bootstrap.min.css', 'dc.css', 'keen-dashboards.css', 'd3.slider.css', 'radar-chart.css', 'time_series.css'] %}
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/css/' + filename) }}">
+    {% endfor %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+</head>
+<body style="background-color: #fff0a8">
+    <div class="tab" style="background-color: #951414">
+      <img src="{{ url_for ('static', filename='img/iitk-logo-black.png') }}" width="40" height="40" style="float: left">
+      <button class="tablinks" onclick="openTabClick(event, 'dashcnt', 1)" id="dashbtn">Dashboard</button>
+    </div>
+    <p style="padding-left: 36px;padding-top: 12px;font-size: 24px;font-weight: 600;" id="pres_st" class="p-4" >India</p>
+
+    <div class="tabcontent" id="dashcnt">
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card card-body" style="border: 3px solid rgba(221, 224, 19, 0.16)">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Confirmed </h6>
+                            <div class="row">
+                                <div class="col-lg-6" id="confcase_cnt"></div>
+                                <div class="col-lg-6" id="confcase_spark"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card card-body" style="border: 3px solid rgba(224, 14, 14, 0.16)">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Total<span class="d-none d-md-inline"> Deaths</span></h6>
+
+                          <div class="row">
+                              <div class="col-lg-6" id="deaths"></div>
+                              <div class="col-lg-6" id="confdth_spark"></div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card card-body" style="border: 3px solid rgba(15, 171, 34, 0.16)">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Recovered </h6>
+
+                          <div class="row">
+                              <div class="col-lg-6" id="confrcv_cases"></div>
+                              <div class="col-lg-6" id="confrcv_spark"></div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="card card-body">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Covid-19 India Map</h6>
+
+                            <div class="chart-stage">
+                                <svg id="indmap" width="650" height="600"> </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="card card-body">
+                          <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Hospital Bed Analysis</h6>
+
+                        <svg class="parallel_svg" id="parallel" width="1200" height="900"></svg>
+                    </div>
+                </div>
+                    
+                      
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-body">
+                  <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Breakdown of Cases</h6>
+                    <div class="chart-stage" style="height:193px">
+                        <div id="piechart"></div>
+                    </div>
+                </div>
+              </div>
+            <div class="col-lg-6">
+              <div class="card card-body">
+                  <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Time-Series Cases Distribution </h6>
+                        <div id="timesrs_dist" style="height: 500px"></div>
+                </div>
+            </div>   
+        </div>
+<script src="{{ url_for('static', filename='lib/js/jquery.min.js') }}"></script>
+<script src="http://d3js.org/colorbrewer.v1.min.js"></script>
+<script src="{{ url_for('static', filename='lib/js/crossfilter.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/js/queue.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/js/keen.min.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/js/radar.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/js/legend.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/js/d3.slider.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/js/d3-legend.min.js') }}"></script>
+<script src="https://d3js.org/topojson.v1.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
