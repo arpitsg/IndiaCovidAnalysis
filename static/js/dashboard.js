@@ -1567,9 +1567,9 @@ function populate_map(startDate = '', endDate = '') {
     .html(function (d) {
       var dataRow = countryById.get(d.properties.name);
       if (dataRow) {
-        return dataRow.states + " confirmed cases: " + dataRow.Confirmed;
+        return dataRow.states;
       } else {
-        return d.properties.name + ": 0";
+        return d.properties.name;
       }
     })
   d3.select('#indmap').selectAll('*').remove();
