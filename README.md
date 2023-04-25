@@ -5,7 +5,7 @@ run python main.py
 This will open up a server on localhost:6060
 
 ## TEAM MEMBERS
-Adit Khokar \n
-Arpit Singh\n
-Pramodh Gopalan\n
-Subhrojyoti Chatterjee\n
+Adit Khokar<br>
+Arpit Singh<br>
+Pramodh Gopalan<br>
+Subhrojyoti Chatterjee
